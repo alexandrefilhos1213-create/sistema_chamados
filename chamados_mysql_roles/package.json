@@ -1,0 +1,12 @@
+{
+  "name": "chamados_mysql_roles",
+  "version": "1.0.0",
+  "description": "Arquitetura: - **MySQL** para banco de dados - **Node.js + Express + mysql2** (API REST) - **Frontend SPA** (HTML/CSS/JS puro) com rotas por `hash`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": []
+}

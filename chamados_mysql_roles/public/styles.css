@@ -1,0 +1,153 @@
+:root {
+  --bg: #efefef;
+  --topbar: #0033cc;
+  --text: #1a1a1a;
+  --label: #444;
+  --input: #fff;
+  --input-border: #dcdcdc;
+  --focus: #5b8cff;
+  --status-aberto: #f39c12;
+  --status-concluido: #2ecc71;
+  --status-em-ajuda: #e74c3c;
+}
+
+/* Reset */
+* { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+html, body { height: 100%; margin: 0; background: var(--bg); color: var(--text); }
+
+/* Topbar */
+.topbar {
+  height: 48px;
+  background: var(--topbar);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+.topbar .brand { font-weight: 700; }
+
+/* Container */
+.container { max-width: 900px; margin: 32px auto; padding: 0 16px; }
+.hidden { display: none; }
+
+/* Forms */
+.form { display: grid; grid-template-columns: 220px 1fr; gap: 14px 16px; align-items: center; }
+.form .full { grid-column: 1 / -1; }
+label { color: var(--label); }
+input, select, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--input-border);
+  background: var(--input);
+  border-radius: 2px;
+  outline: none;
+}
+textarea { resize: vertical; min-height: 100px; }
+input:focus, select:focus, textarea:focus { border-color: var(--focus); box-shadow: 0 0 0 2px #5b8cff22; }
+
+/* Buttons */
+.btn {
+  background: var(--topbar);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.btn:hover { background: #002299; }
+.btn.secondary { background: #666; }
+.btn.block { width: 100%; }
+#user-new-btn { margin-bottom: 10px; padding: 8px 16px; }
+
+/* Notes */
+.note { color: #666; font-size: .9rem; margin-top: 8px; }
+
+/* Tables */
+.table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #e6e6e6; }
+.table th, .table td { padding: 10px 12px; border-bottom: 1px solid #eee; text-align: left; }
+
+/* Tabs */
+.tabs, .user-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+.tab, .user-tab {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.tab.active, .user-tab.active { border-color: var(--topbar); font-weight: bold; background: #f0f4ff; }
+
+/* Chat */
+.chatbox, #user-chatbox, #tech-chatbox {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-y: auto;
+  height: 400px;
+}
+.chat-input { display: flex; gap: 8px; margin-top: 10px; }
+.chat-input input { flex: 1; }
+#user-send, #tech-send { padding: 6px 12px; font-size: 0.9rem; cursor: pointer; }
+
+/* Chat header do usuário */
+#user-chat-header, #tech-ticket-head {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#user-chat-header .status, #tech-ticket-head .status {
+  font-weight: normal;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #fff;
+  margin-left: 6px;
+}
+.status.aberto { background-color: var(--status-aberto); }
+.status.concluido { background-color: var(--status-concluido); }
+.status.em-ajuda { background-color: var(--status-em-ajuda); }
+
+/* Mensagens */
+.msg { margin: 8px 0; max-width: 80%; display: flex; flex-direction: column; }
+.msg-header { font-weight: bold; font-size: 0.8rem; margin-bottom: 2px; color: #555; }
+.msg-content { padding: 8px 12px; border-radius: 15px; font-size: 0.9rem; word-wrap: break-word; }
+.msg.user .msg-content { background-color: #d1e7dd; text-align: left; align-self: flex-start; border-top-left-radius: 0; }
+.msg.tech .msg-content { background-color: #cfe2ff; text-align: right; align-self: flex-end; border-top-right-radius: 0; }
+.msg.system { text-align: center; font-size: 0.8rem; color: #888; margin: 10px 0; background-color: #f3f6ff; border-left: 4px solid var(--topbar); padding: 10px; }
+
+/* Estilo tipo WhatsApp */
+.chat-msg { display: flex; flex-direction: column; margin: 5px 10px; max-width: 70%; }
+.chat-msg.left { align-self: flex-start; }
+.chat-msg.right { align-self: flex-end; }
+.chat-msg.left .msg-content { background-color: #e5e5ea; color: #000; }
+.chat-msg.right .msg-content { background-color: #0b93f6; color: #fff; }
+
+/* Badge ajuda presencial */
+span.ajuda-presencial { color: red; font-weight: bold; margin-left: 5px; }
+span.badge {
+  background-color: red;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  margin-left: 4px;
+  display: inline-block;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* Botão Finalizar Técnico */
+#tech-complete {
+  background-color: var(--status-concluido);
+  color: #fff;
+  font-weight: bold;
+  margin-left: 8px;
+}
+#tech-complete:hover { background-color: #27ae60; }
+
+/* HUB DO USUÁRIO */
+#user-hub-tbody td { padding: 8px; border-bottom: 1px solid #eee; }
+#tech-tbody td { padding: 8px; border-bottom: 1px solid #eee; }
