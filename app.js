@@ -15,12 +15,17 @@ let techTableInterval = null;
 let notificationInterval = null;
 
 // ==========================
+// URL DO BACKEND
+// ==========================
+const API_BASE = 'https://sistema-chamados-6h91.onrender.com';
+
+// ==========================
 // API
 // ==========================
 const API = {
   async login(email, senha) {
     try {
-      const r = await fetch('http://localhost:3000/api/login', {
+      const r = await fetch(`${API_BASE}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, senha })
@@ -33,7 +38,7 @@ const API = {
 
   async post(path, body) {
     try {
-      const r = await fetch(path, {
+      const r = await fetch(`${API_BASE}${path}`, {
         method: 'POST',
         headers: authHeaders(),
         body: JSON.stringify(body)
@@ -46,7 +51,7 @@ const API = {
 
   async get(path) {
     try {
-      const r = await fetch(path, { headers: authHeaders() });
+      const r = await fetch(`${API_BASE}${path}`, { headers: authHeaders() });
       return r.json();
     } catch (e) {
       return { ok: false, error: e.message };
@@ -55,7 +60,7 @@ const API = {
 
   async patch(path, body) {
     try {
-      const r = await fetch(path, {
+      const r = await fetch(`${API_BASE}${path}`, {
         method: 'PATCH',
         headers: authHeaders(),
         body: body ? JSON.stringify(body) : undefined
@@ -267,7 +272,6 @@ async function openUserChat(ticketId) {
   const helpBtn = document.getElementById('user-help');
   const backBtn = document.getElementById('user-chat-back');
 
-  // botão voltar
   if (backBtn) {
     backBtn.onclick = () => {
       clearInterval(userChatInterval);
@@ -411,7 +415,6 @@ async function openTechChat(ticketId) {
   const sendBtn = document.getElementById('tech-send');
   const backBtn = document.getElementById('tech-back');
 
-  // botão voltar
   if (backBtn) {
     backBtn.onclick = () => {
       clearInterval(techChatInterval);
